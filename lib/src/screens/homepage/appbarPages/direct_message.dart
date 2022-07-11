@@ -1,7 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:whatsapp_status_saver/src/controller/direct_message_controller.dart';
 
 class DirectMessage extends StatefulWidget {

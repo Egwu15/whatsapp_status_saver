@@ -10,18 +10,45 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:whatsapp_status_saver/src/config/config.dart';
 
 class FileHandler {
-  List<File> getMediaFiles() {
-    List<File> mediaFiles = [];
-
+  List<File> _sortAndSepeateFiles(Directory dir) {
+    List<File> files = [];
     try {
-      Directory dir = Directory(Config.gbWhatsAppPath);
-      mediaFiles = dir
+      files = dir
           .listSync()
           .map((item) => item.path)
           .where(
               (element) => element.endsWith('.jpg') || element.endsWith('.mp4'))
           .map((item) => File(item))
           .toList();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    return files;
+  }
+
+  List<File> getMediaFiles() {
+    List<File> mediaFiles = [];
+
+    try {
+      Directory whatsappDir = Directory(Config.whatsAppPath);
+      Directory whatsappDirAndroid11 = Directory(Config.whatsappBusinessPathAndroid11);
+      Directory gbWhatsAppDir = Directory(Config.gbWhatsAppPath);
+      Directory whatsappBusinessDir = Directory(Config.whatsappBusinessPath);
+
+      if (whatsappDirAndroid11.existsSync()) {
+        mediaFiles.addAll(_sortAndSepeateFiles(whatsappDirAndroid11));
+      }
+      if (whatsappDir.existsSync()) {
+        mediaFiles.addAll(_sortAndSepeateFiles(whatsappDir));
+      }
+      if (gbWhatsAppDir.existsSync()) {
+        mediaFiles.addAll(_sortAndSepeateFiles(gbWhatsAppDir));
+      }
+      if (whatsappBusinessDir.existsSync()) {
+        mediaFiles.addAll(_sortAndSepeateFiles(whatsappBusinessDir));
+      }
       mediaFiles
           .sort((a, b) => b.lastModifiedSync().compareTo(a.lastModifiedSync()));
     } catch (e) {

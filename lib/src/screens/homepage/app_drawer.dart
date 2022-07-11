@@ -43,7 +43,14 @@ class AppDrawerWidget extends StatelessWidget {
             title: const Text('Direct chat'),
             onTap: () {
               Get.back();
-              Get.to(() => DirectMessage());
+              Get.to(() => const DirectMessage());
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings_outlined),
+            title: const Text('Settings'),
+            onTap: () {
+              Navigator.pop(context);
             },
           ),
           ListTile(

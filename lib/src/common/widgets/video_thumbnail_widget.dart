@@ -2,8 +2,6 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import '../../../src/screens/video_player.dart';
 import '../../services/file_handler.dart';
 
 class BuildVideoThumbnail extends StatefulWidget {

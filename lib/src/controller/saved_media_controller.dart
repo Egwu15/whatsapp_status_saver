@@ -4,7 +4,6 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:whatsapp_status_saver/src/controller/homepage_controller.dart';
-import 'package:whatsapp_status_saver/src/screens/homepage/screen.homepage.dart';
 import '../screens/slider_page.dart';
 import '../services/get_permission.dart';
 import '../services/file_handler.dart';
