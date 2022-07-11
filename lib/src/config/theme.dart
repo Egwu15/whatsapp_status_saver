@@ -6,8 +6,7 @@ ThemeData themeData = ThemeData(
     primaryColor: Colors.green[900],
     primarySwatch: Colors.green,
     inputDecorationTheme: InputDecorationTheme(
-        border: const OutlineInputBorder(),
-        labelStyle: GoogleFonts.heebo()),
+        border: const OutlineInputBorder(), labelStyle: GoogleFonts.heebo()),
     textTheme: TextTheme(
       headline1: GoogleFonts.barlowSemiCondensed(
         fontSize: 24,
