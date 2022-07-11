@@ -38,16 +38,18 @@ class FileHandler {
       Directory whatsappBusinessDir = Directory(Config.whatsappBusinessPath);
 
       if (whatsappDirAndroid11.existsSync()) {
+        print("exist");
+        
         mediaFiles.addAll(_sortAndSepeateFiles(whatsappDirAndroid11));
-      }
-      if (whatsappDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(whatsappDir));
-      }
-      if (gbWhatsAppDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(gbWhatsAppDir));
-      }
-      if (whatsappBusinessDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(whatsappBusinessDir));
+      // }
+      // if (whatsappDir.existsSync()) {
+      //   mediaFiles.addAll(_sortAndSepeateFiles(whatsappDir));
+      // }
+      // if (gbWhatsAppDir.existsSync()) {
+      //   mediaFiles.addAll(_sortAndSepeateFiles(gbWhatsAppDir));
+      // }
+      // if (whatsappBusinessDir.existsSync()) {
+      //   mediaFiles.addAll(_sortAndSepeateFiles(whatsappBusinessDir));
       }
       mediaFiles
           .sort((a, b) => b.lastModifiedSync().compareTo(a.lastModifiedSync()));

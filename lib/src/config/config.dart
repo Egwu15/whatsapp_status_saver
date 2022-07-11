@@ -4,6 +4,7 @@ class Config {
       "/storage/emulated/0/WhatsApp Business/Media/.Statuses";
   static const String whatsappBusinessPathAndroid11 =
       "/storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/.Statuses";
+      
   static const String whatsAppPath =
       '/storage/emulated/0/WhatsApp/Media/.Statuses';
       static const String gbWhatsAppPath =
