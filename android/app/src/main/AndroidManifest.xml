@@ -1,10 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.whatsapp_status_saver">
+    package="com.tedif.statussaverwhatsapptsapp">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
    <application
-        android:label="whatsapp_status_saver"
+        android:label="Status Saver WhatsApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1947480573118266~6141737830"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

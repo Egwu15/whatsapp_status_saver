@@ -22,7 +22,7 @@ class AppDrawerWidget extends StatelessWidget {
             ),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('WhatsApp Status Saver',
+              child: Text('Status Saver WhatsApp',
                   style: Theme.of(context).textTheme.headline1),
             ),
           ),
