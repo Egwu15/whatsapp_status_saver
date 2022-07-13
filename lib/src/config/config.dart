@@ -1,5 +1,5 @@
 class Config {
-  static const String saveDir = "/storage/emulated/0/Download/Status Saver WhatsApp";
+  static const String saveDir = "/storage/emulated/0/DCIM/Status Saver WhatsApp";
   static const String whatsappBusinessPath =
       "/storage/emulated/0/WhatsApp Business/Media/.Statuses";
   static const String whatsappBusinessPathAndroid11 =
