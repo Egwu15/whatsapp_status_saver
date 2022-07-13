@@ -20,7 +20,7 @@ class HomePageController extends GetxController {
     _checkforPermissionAndGetFIles();
     homeBannerAd.load();
     exitBannerAd.load();
-    
+
     super.onInit();
   }
 

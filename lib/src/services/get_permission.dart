@@ -2,7 +2,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class DevicePermission {
   checkFilePermissionStatus() async {
- Map<Permission, PermissionStatus> result = await [
+    Map<Permission, PermissionStatus> result = await [
       Permission.storage,
       Permission.manageExternalStorage,
     ].request();
@@ -11,7 +11,7 @@ class DevicePermission {
     if (result[Permission.storage] == PermissionStatus.granted &&
         result[Permission.manageExternalStorage] == PermissionStatus.granted) {
       // todo:set no permission error screen
-    } 
+    }
   }
 
   getFilePermission() async => await Permission.storage.request();
