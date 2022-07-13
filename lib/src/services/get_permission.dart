@@ -1,4 +1,6 @@
+import 'package:get/route_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../screens/homepage/screen.homepage.dart';
 
 class DevicePermission {
   checkFilePermissionStatus() async {
@@ -7,10 +9,9 @@ class DevicePermission {
       Permission.manageExternalStorage,
     ].request();
 
-    //if permission is granted only then show home screen else permission error screen is already shown
     if (result[Permission.storage] == PermissionStatus.granted &&
         result[Permission.manageExternalStorage] == PermissionStatus.granted) {
-      // todo:set no permission error screen
+      Get.offAll(() => const HomePage());
     }
   }
 

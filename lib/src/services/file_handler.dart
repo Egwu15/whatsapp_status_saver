@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:media_scanner/media_scanner.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:flutter/foundation.dart';
@@ -117,7 +118,9 @@ class FileHandler {
     }
 
     File newFile = file.copySync("${dir.path}/${basename(file.path)}");
+
     if (newFile.existsSync()) {
+      MediaScanner.loadMedia(path: newFile.path);
       Get.snackbar("", "",
           titleText: Center(
               child: Text(

@@ -9,4 +9,6 @@ class Config {
   static const String gbWhatsAppPath =
       '/storage/emulated/0/GBWhatsApp/Media/.Statuses';
   static const String chatLink = "https://wa.me/";
+  static const String exitPageBanner = "ca-app-pub-1947480573118266/6983798796";
+  static const String homeStatus = "ca-app-pub-1947480573118266/5471653994";
 }
