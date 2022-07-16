@@ -6,7 +6,7 @@
    <application
         android:label="Status Saver WhatsApp"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-1947480573118266~6141737830"/>
