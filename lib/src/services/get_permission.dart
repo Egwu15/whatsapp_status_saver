@@ -11,7 +11,7 @@ class DevicePermission {
 
     if (result[Permission.storage] == PermissionStatus.granted &&
         result[Permission.manageExternalStorage] == PermissionStatus.granted) {
-      Get.offAll(() => const HomePage());
+      
     }
   }
 
