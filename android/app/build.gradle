@@ -54,13 +54,15 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion = 21
-        targetSdkVersion = 33
+        targetSdkVersion = 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
   signingConfigs {
        release {
+           v1SigningEnabled true
+           v2SigningEnabled true
            keyAlias keystoreProperties['keyAlias']
            keyPassword keystoreProperties['keyPassword']
            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null

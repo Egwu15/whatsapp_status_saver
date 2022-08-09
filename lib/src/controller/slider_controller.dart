@@ -12,13 +12,13 @@ class SlideController extends GetxController {
   @override
   void onInit() async {
     await carouselController.onReady.then(
-      (_) =>
-          carouselController.jumpToPage(_homePageController.selectedIndex.value),
+      (_) => carouselController
+          .jumpToPage(_homePageController.selectedIndex.value),
     );
     super.onInit();
   }
 
-  downloadFile() => FileHandler().downlaodMedia(
+  downloadFile() => FileHandler().downloadMedia(
       _homePageController.mediaFiles[_homePageController.selectedIndex.value]);
 
   shareFile() => _fileHandler.shareFile(

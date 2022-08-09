@@ -6,12 +6,14 @@ import 'package:media_scanner/media_scanner.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:flutter/foundation.dart';
+import 'package:saf/saf.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:whatsapp_status_saver/src/config/config.dart';
+import 'package:whatsapp_status_saver/src/services/get_permission.dart';
 
 class FileHandler {
-  List<File> _sortAndSepeateFiles(Directory dir) {
+  List<File> _sortAndSeparateFiles(Directory dir) {
     List<File> files = [];
     try {
       files = dir
@@ -29,28 +31,45 @@ class FileHandler {
     return files;
   }
 
-  List<File> getMediaFiles() {
+  _getAndroid11Files() async {
+    Saf? android11 = await DevicePermission().getAndroid11Permission();
+    List<File> android11Files = [];
+    await android11?.sync();
+
+    List<String>? android11FilesPath = await android11?.getCachedFilesPath();
+    if (android11FilesPath != null) {
+      for (String element in android11FilesPath) {
+        if (element.endsWith("mp4") || element.endsWith("jpg")) {
+          android11Files.add(File(element));
+        }
+      }
+    }
+    return android11Files;
+  }
+
+  Future<List<File>> getMediaFiles() async {
     List<File> mediaFiles = [];
 
     try {
       Directory whatsappDir = Directory(Config.whatsAppPath);
-      Directory whatsappDirAndroid11 =
-          Directory(Config.whatsappBusinessPathAndroid11);
+      Directory whatsappAndroid11FullPath =
+          Directory(Config.whatsappAndroid11FullPath);
       Directory gbWhatsAppDir = Directory(Config.gbWhatsAppPath);
       Directory whatsappBusinessDir = Directory(Config.whatsappBusinessPath);
 
-      if (whatsappDirAndroid11.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(whatsappDirAndroid11));
+      if (whatsappAndroid11FullPath.existsSync()) {
+        mediaFiles.addAll(await _getAndroid11Files());
       }
       if (whatsappDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(whatsappDir));
+        mediaFiles.addAll(_sortAndSeparateFiles(whatsappDir));
       }
       if (gbWhatsAppDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(gbWhatsAppDir));
+        mediaFiles.addAll(_sortAndSeparateFiles(gbWhatsAppDir));
       }
       if (whatsappBusinessDir.existsSync()) {
-        mediaFiles.addAll(_sortAndSepeateFiles(whatsappBusinessDir));
+        mediaFiles.addAll(_sortAndSeparateFiles(whatsappBusinessDir));
       }
+
       mediaFiles
           .sort((a, b) => b.lastModifiedSync().compareTo(a.lastModifiedSync()));
     } catch (e) {
@@ -58,6 +77,8 @@ class FileHandler {
         print(e);
       }
     }
+
+    //TODO: refactor this into a separate function that takes an action (function as a parameter)
     return mediaFiles;
   }
 
@@ -110,7 +131,7 @@ class FileHandler {
     return videos;
   }
 
-  downlaodMedia(File file) {
+  downloadMedia(File file) {
     Directory dir = Directory(Config.saveDir);
 
     if (!dir.existsSync()) {
@@ -124,7 +145,7 @@ class FileHandler {
       Get.snackbar("", "",
           titleText: Center(
               child: Text(
-            "Status saved scusessfully",
+            "Status saved successfully",
             style: Theme.of(Get.context!).textTheme.headline3,
           )),
           messageText: Container(),

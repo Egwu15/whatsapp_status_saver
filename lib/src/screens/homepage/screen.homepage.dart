@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
@@ -38,7 +40,9 @@ class _HomePageState extends State<HomePage> {
           return false;
         },
         child: Obx(
-          () => Column(
+          () => RefreshIndicator(
+            onRefresh: ()=>homePageController.onRefreshHome(),
+            child: Column(
             children: [
               Expanded(
                 child: GridView.builder(
@@ -49,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                     child: Card(
                       child: Padding(
                         padding: const EdgeInsets.all(1),
-                        child: Column(
+                        child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             homePageController.mediaFiles[index].path
                                     .endsWith("jpg")
@@ -99,14 +103,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              if (homePageController.isHomeaAdLoaded.value)
+              if (homePageController.isHomeAdLoaded.value)
                 SizedBox(
                     height: homeBannerAd.size.height.ceilToDouble(),
                     child: AdWidget(ad: homeBannerAd))
             ],
           ),
         ),
-      ),
+      ),),
     );
   }
 }
