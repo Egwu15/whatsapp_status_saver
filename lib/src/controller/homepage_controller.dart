@@ -20,11 +20,18 @@ class HomePageController extends GetxController {
 
   @override
   void onInit() {
-    _checkForPermissionAndGetFiles();
+    // _checkForPermissionAndGetFiles();
     homeBannerAd.load();
     exitBannerAd.load();
 
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    homeBannerAd.dispose();
+    exitBannerAd.dispose();
+    super.dispose();
   }
 
   videoThumbnail(videoPath) async =>
@@ -47,5 +54,5 @@ class HomePageController extends GetxController {
 
   void downloadFile(index) => _fileHandler.downloadMedia(mediaFiles[index]);
 
-  void lunchShareApp()=>shareAppLink();
+  void lunchShareApp() => shareAppLink();
 }
