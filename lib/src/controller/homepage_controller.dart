@@ -8,6 +8,7 @@ import 'package:whatsapp_status_saver/src/services/ads.dart';
 import '../screens/slider_page.dart';
 import '../services/get_permission.dart';
 import '../services/file_handler.dart';
+import '../services/lunch_url.dart';
 
 class HomePageController extends GetxController {
   RxList<File> mediaFiles = <File>[].obs;
@@ -45,4 +46,6 @@ class HomePageController extends GetxController {
   }
 
   void downloadFile(index) => _fileHandler.downloadMedia(mediaFiles[index]);
+
+  void lunchShareApp()=>shareAppLink();
 }

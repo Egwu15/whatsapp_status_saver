@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:whatsapp_status_saver/src/controller/homepage_controller.dart';
 import 'package:whatsapp_status_saver/src/screens/homepage/appbarPages/direct_message.dart';
 import 'appbarPages/saved_status.dart';
 
@@ -50,6 +51,7 @@ class AppDrawerWidget extends StatelessWidget {
             leading: const Icon(Icons.offline_share_outlined),
             title: const Text('Share app'),
             onTap: () {
+              HomePageController().lunchShareApp();
               Navigator.pop(context);
             },
           ),
