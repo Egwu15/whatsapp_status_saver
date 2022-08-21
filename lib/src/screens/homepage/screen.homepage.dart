@@ -17,11 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void dispose() {
-    homeBannerAd.dispose();
-    super.dispose();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(
                   child: FutureBuilder(
-                      future: homePageController.onRefreshHome(),
+                      future: homePageController.onLoadHome(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState != ConnectionState.done) {
                           return const Center(

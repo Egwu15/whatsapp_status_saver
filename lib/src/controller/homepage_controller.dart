@@ -42,7 +42,11 @@ class HomePageController extends GetxController {
     mediaFiles.value = await _fileHandler.getMediaFiles();
   }
 
-  Future<void> onRefreshHome() async => _checkForPermissionAndGetFiles();
+  Future<void> onLoadHome() async => _checkForPermissionAndGetFiles();
+  Future<void> onRefreshHome() async {
+    _fileHandler.resetAndroid11Cache;
+    _checkForPermissionAndGetFiles();
+  }
 
   void onMediaClick(int index) {
     selectedIndex.value = index;

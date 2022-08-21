@@ -31,6 +31,11 @@ class FileHandler {
     return files;
   }
 
+  resetAndroid11Cache() async{
+      Saf? android11 = await DevicePermission().getAndroid11Permission();
+      await android11?.clearCache();
+  }
+
   _getAndroid11Files() async {
     Saf? android11 = await DevicePermission().getAndroid11Permission();
     List<File> android11Files = [];
@@ -144,6 +149,7 @@ class FileHandler {
       MediaScanner.loadMedia(path: newFile.path);
       Get.snackbar("", "",
           titleText: Center(
+            
               child: Text(
             "Status saved successfully",
             style: Theme.of(Get.context!).textTheme.headline3,
